@@ -1,19 +1,30 @@
-#About
-Rough OF addon that uses turbo-jpeg lib to read and write jpegs. 2-4 times faster than OF's freeImge based jpeg en/decoder.
+# About
+OF addon that uses turbo-jpeg lib to read and write jpegs. 2-4 times faster than OF's freeImge based jpeg en/decoder.
 
 You will need to install libjpeg-turbo (http://sourceforge.net/projects/libjpeg-turbo/) and its dylibs or freemImage's internal version of libjpeg will conflict with the one required by libjpeg-turbo, throwing a "Wrong JPEG library version: library is 80, caller expects 62" error. Alternatively you can just place the "libturbojpeg.dylib" by the binary and it should work. Only tested on OSX Lion.
 
+## Usage
 	ofxTurboJpeg turbo;
 	
-	//load jpeg
-	ofImage * image = turbo.load("loadTest.jpg");
 	
-	//save jpeg
-	turbo.save(image, "save turbo.jpg", 75);
+	//load jpeg
+	ofPixels pix;
+	turbo.load(pix, "test.jpg");
+	
+	//save jpeg, use quality 1..100
+	turbo.save(image, "save.jpg", 75);
+	
+	//save to ofBuffer
+	save(buf, pix, jpegQuality);  //note: not use 'save(pix, buf, jpegQuality);' !
+	
 
 ![ofxTurboJpeg screenshot](http://farm8.staticflickr.com/7243/6999702551_fc8812d210_z.jpg)
 
-#Compiling
+# Compiling
+
+In openFrameworks 0.10.1, Windows, it's added to project by Project Generator.
+
+Original notes:
 
 * Visual studio 2015 (instructions by [tgfrerer](https://github.com/tgfrerer) and [mattfelsen](https://github.com/mattfelsen))
   * turboJPEG libraries for vs2015 compiled straight off the sources using the following recipe:

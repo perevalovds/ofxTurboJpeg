@@ -1,5 +1,9 @@
 #pragma once
 
+//ofxTurboJpeg - converting rasters to JPEG images using TurboJpeg library
+//NOTE: for saving into ofBuffer, use 'save(buf, pix, jpegQuality);', not 'save(pix, buf, jpegQuality);
+
+
 #include "ofMain.h"
 
 #include "turbojpeg.h"
